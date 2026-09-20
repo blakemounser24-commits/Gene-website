@@ -32,7 +32,7 @@ export const content = {
       },
       {
         title: "Commercial Painting",
-        image: "/work/DQAeftwkxje-3.jpg",
+        image: "/work/svc-commercial.jpg",
         description: "",
       },
       {
