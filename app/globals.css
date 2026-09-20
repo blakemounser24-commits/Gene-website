@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+:root {
+  /* ------------------------------------------------------------------
+     Brand palette — sampled straight out of the GJ Paint Partners logo
+     artwork. These three are the logo's exact inks; everything else in
+     this file is a tint or shade derived from them.
+     ------------------------------------------------------------------ */
+  --brand-cream: #f6f4f1;
+  --brand-teal: #007b80;
+  --brand-orange: #c15400;
+
+  /* Cream — the page ground and anything sitting on dark teal */
+  --color-cream-100: #fffefc; /* card surfaces + type on orange fills */
+  --color-cream-50: #f6f4f1; /* EXACT brand cream — the page ground */
+  --color-cream-200: #ece8e1; /* alternate band */
+  --color-cream-300: #ddd6cc; /* hairlines on cream */
+
+  /* Teal — headings, ink, and the dark surfaces that anchor the page */
+  --color-teal-900: #022b2e; /* deepest — footer ground, scrims, shadows */
+  --color-teal-800: #04383b; /* ink — body copy, hairlines */
+  --color-teal-700: #005b5f; /* pressed / hover */
+  --color-teal-600: #007b80; /* EXACT brand teal — headings, primary */
+  --color-teal-500: #2a9a9e;
+  --color-teal-400: #58b3b6;
+  --color-teal-100: #dde9e8;
+  --color-teal-50: #eef4f3;
+
+  /* Orange — eyebrows, CTAs, every accent the brass used to carry */
+  --color-orange-700: #9b4300;
+  --color-orange-600: #c15400; /* EXACT brand orange */
+  --color-orange-500: #d9691a; /* lifted, for orange on dark teal */
+  --color-orange-100: #f7e5d8;
+
+  /* ------------------------------------------------------------------
+     Legacy template token names, remapped onto the palette above so the
+     whole site follows the logo. Roles are preserved, not hues: names
+     that used to mean "light type on a dark ground" now mean "dark type
+     on a cream ground", and the surface names now mean "lifted white
+     card" rather than "lifted charcoal panel".
+     ------------------------------------------------------------------ */
+  --color-stone-50: #007b80; /* headings */
+  --color-stone-100: #04383b; /* ink + hairline borders at low alpha */
+  --color-stone-200: #12474a; /* body copy */
+  --color-stone-300: #062f32; /* secondary copy */
+  --color-stone-400: #35595b; /* faint copy, placeholders */
+
+  --color-charcoal-950: #022b2e; /* stays dark: scrims and shadow colour */
+  --color-charcoal-900: #fffefc; /* lifted surface */
+  --color-charcoal-800: #fffefc; /* lifted surface */
+  --color-charcoal-700: #f0ece5;
+
+  --color-graphite-600: #e6e0d7;
+  --color-graphite-500: #ddd6cc;
+
+  --color-slate-500: #3d6a6c; /* muted body copy */
+  --color-slate-400: #5c8284;
+
+  --color-bronze-600: #c15400;
+  --color-bronze-500: #9b4300;
+  --color-bronze-400: #c15400;
+
+  --color-gold-500: #c15400;
+  --color-gold-400: #c15400;
+  --color-gold-300: #c15400;
+
+  /* Hero scrim + the old brass accents */
+  --color-navy-900: #022b2e;
+  --color-navy-800: #04383b;
+  --color-brass-700: #9b4300;
+  --color-brass-600: #c15400;
+  --color-brass-500: #c15400;
+
+  --color-forest-950: #022b2e;
+  --color-forest-900: #04383b;
+  --color-forest-800: #005b5f;
+  --color-moss-400: #c15400;
+  --color-moss-300: #c15400;
+  --color-meadow-50: #f6f4f1;
+
+  /* Page ground */
+  --color-lawn-800: #04383b;
+  --color-lawn-700: #f6f4f1;
+  --color-lawn-600: #ece8e1;
+
+  --shadow-color: 184 87% 9%;
+
+  /* Teal-tinted elevation, referenced via shadow-[var(--shadow-*)]. Light
+     grounds need far less shadow than the old dark ones did. */
+  --shadow-surface: 0 1px 2px rgba(2, 43, 46, 0.05), 0 6px 16px -6px rgba(2, 43, 46, 0.1);
+  --shadow-elevated: 0 2px 4px rgba(2, 43, 46, 0.05), 0 16px 32px -8px rgba(2, 43, 46, 0.1),
+    0 32px 64px -20px rgba(2, 43, 46, 0.12);
+  --shadow-floating: 0 4px 8px rgba(2, 43, 46, 0.06), 0 24px 48px -12px rgba(2, 43, 46, 0.14),
+    0 40px 80px -24px rgba(2, 43, 46, 0.16);
+  --shadow-gold: 0 10px 24px -10px rgba(193, 84, 0, 0.4), 0 2px 6px rgba(2, 43, 46, 0.08);
+}
+
+@theme inline {
+  --color-cream-300: var(--color-cream-300);
+  --color-cream-200: var(--color-cream-200);
+  --color-cream-100: var(--color-cream-100);
+  --color-cream-50: var(--color-cream-50);
+
+  --color-teal-900: var(--color-teal-900);
+  --color-teal-800: var(--color-teal-800);
+  --color-teal-700: var(--color-teal-700);
+  --color-teal-600: var(--color-teal-600);
+  --color-teal-500: var(--color-teal-500);
+  --color-teal-400: var(--color-teal-400);
+  --color-teal-100: var(--color-teal-100);
+  --color-teal-50: var(--color-teal-50);
+
+  --color-orange-700: var(--color-orange-700);
+  --color-orange-600: var(--color-orange-600);
+  --color-orange-500: var(--color-orange-500);
+  --color-orange-100: var(--color-orange-100);
+
+  --color-stone-50: var(--color-stone-50);
+  --color-stone-100: var(--color-stone-100);
+  --color-stone-200: var(--color-stone-200);
+  --color-stone-300: var(--color-stone-300);
+  --color-stone-400: var(--color-stone-400);
+
+  --color-charcoal-950: var(--color-charcoal-950);
+  --color-charcoal-900: var(--color-charcoal-900);
+  --color-charcoal-800: var(--color-charcoal-800);
+  --color-charcoal-700: var(--color-charcoal-700);
+
+  --color-graphite-600: var(--color-graphite-600);
+  --color-graphite-500: var(--color-graphite-500);
+
+  --color-slate-500: var(--color-slate-500);
+  --color-slate-400: var(--color-slate-400);
+
+  --color-bronze-600: var(--color-bronze-600);
+  --color-bronze-500: var(--color-bronze-500);
+  --color-bronze-400: var(--color-bronze-400);
+
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-300: var(--color-gold-300);
+
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-800: var(--color-navy-800);
+  --color-brass-700: var(--color-brass-700);
+  --color-brass-600: var(--color-brass-600);
+  --color-brass-500: var(--color-brass-500);
+
+  --color-forest-950: var(--color-forest-950);
+  --color-forest-900: var(--color-forest-900);
+  --color-forest-800: var(--color-forest-800);
+  --color-moss-400: var(--color-moss-400);
+  --color-moss-300: var(--color-moss-300);
+  --color-meadow-50: var(--color-meadow-50);
+
+  --color-lawn-800: var(--color-lawn-800);
+  --color-lawn-700: var(--color-lawn-700);
+  --color-lawn-600: var(--color-lawn-600);
+
+  --font-display: var(--font-playfair), "Playfair Display", serif;
+  --font-sans: var(--font-dm-sans), "DM Sans", sans-serif;
+
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-marquee: marquee 32s linear infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* The services rail runs off the right edge while it's pinned. `clip` hides that
+   overflow without creating a scroll container, which `hidden` would — and a
+   scroll container on an ancestor breaks the rail's position:sticky. It has to
+   sit on the root element, since that is what actually scrolls. */
+html {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-cream-50);
+  color: var(--color-stone-100);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-orange-600);
+  color: var(--color-cream-100);
+}
+
+/* subtle paper texture used over cream surfaces for depth */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
