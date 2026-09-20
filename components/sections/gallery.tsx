@@ -75,8 +75,10 @@ export function Gallery() {
               aria-hidden="true"
             />
             <figcaption className="absolute inset-x-0 bottom-0 translate-y-2 p-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              {/* Published work carries its outlet or studio instead of a plain
+                  index — it is the strongest thing these photos say. */}
               <span className="mb-1.5 block font-sans text-[10px] font-semibold tracking-[0.3em] text-orange-500">
-                {String(index + 1).padStart(2, "0")}
+                {"credit" in item && item.credit ? item.credit : String(index + 1).padStart(2, "0")}
               </span>
               <p className="font-display text-lg font-medium leading-tight text-cream-50">{item.label}</p>
             </figcaption>

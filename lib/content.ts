@@ -112,8 +112,20 @@ export const content = {
     eyebrow: "Our Work",
     heading: "Rooms We've Transformed",
     subhead: "A look at some of the homes we've prepared, painted and finished.",
-    // Real project photos, pulled from @gjpaintpartners.
+    // Published work leads: these are GJ jobs that ran in Vogue Living or were
+    // posted by the studios they worked with. The rest are their own photos.
     items: [
+      { label: "Reconfigured open-plan living", image: "/work/feat-vogue-living-room.jpg", credit: "As seen in Vogue Living" },
+      { label: "Golden Light, Upper North Shore", image: "/work/feat-vogue-golden-light.jpg", credit: "As seen in Vogue Living" },
+      { label: "Timber ceiling, open-plan living", image: "/work/feat-vogue-timber-ceiling.jpg", credit: "As seen in Vogue Living" },
+      { label: "Dining and sitting rooms in deep marigold", image: "/work/feat-ap-marigold-dining.jpg", credit: "Featured by Arent & Pyke" },
+      { label: "Formal dining room in mellow marigold", image: "/work/feat-ap-formal-dining.jpg", credit: "Featured by Arent & Pyke" },
+      { label: "Study in rich toffee", image: "/work/feat-ap-toffee-study.jpg", credit: "Featured by Arent & Pyke" },
+      { label: "Study in dark toffee", image: "/work/feat-ap-dark-study.jpg", credit: "Featured by Arent & Pyke" },
+      { label: "Woven timber cabinetry and stone", image: "/work/feat-ap-woven-cabinetry.jpg", credit: "Featured by Arent & Pyke" },
+      { label: "Monroe primary bedroom", image: "/work/feat-parker-bedroom.jpg", credit: "Featured by Parker Studio" },
+      { label: "Tree House central courtyard", image: "/work/feat-cma-courtyard.jpg", credit: "Featured by Carla Middleton Architecture" },
+      { label: "Restored Federation home", image: "/work/feat-cma-federation.jpg", credit: "Featured by Carla Middleton Architecture" },
       { label: "Timber ceiling and built-in joinery", image: "/work/Dcsj68HlXS9-1.jpg" },
       { label: "Living room in warm neutrals", image: "/work/DckR8ZfE8Hd-7.jpg" },
       { label: "Arched hallway with ornate cornice", image: "/work/DckR8ZfE8Hd-6.jpg" },
