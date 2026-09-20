@@ -3,51 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { TextType } from "@/components/ui/text-type";
 import { TextEffect } from "@/components/ui/text-effect";
-import {
-  Building2,
-  Columns3,
-  DoorOpen,
-  Droplets,
-  Fence,
-  Gem,
-  Home,
-  House,
-  Landmark,
-  Layers,
-  PaintRoller,
-  Paintbrush,
-  Ruler,
-  ShieldCheck,
-  Sparkles,
-  SprayCan,
-  TreePine,
-  Wallpaper,
-  type LucideIcon,
-} from "lucide-react";
 import { PinnedRail } from "@/components/ui/pinned-rail";
 import { ServiceCard } from "@/components/sections/service-card";
 import { content } from "@/lib/content";
-
-const ICONS: Record<string, LucideIcon> = {
-  Building2,
-  Columns3,
-  DoorOpen,
-  Droplets,
-  Fence,
-  Gem,
-  Home,
-  House,
-  Landmark,
-  Layers,
-  PaintRoller,
-  Paintbrush,
-  Ruler,
-  ShieldCheck,
-  Sparkles,
-  SprayCan,
-  TreePine,
-  Wallpaper,
-};
 
 const SOFT_WORDS = {
   container: { hidden: {}, visible: { transition: { staggerChildren: 0.03 } } },
@@ -66,7 +24,6 @@ export function Services() {
       description={service.description}
       image={service.image}
       index={index}
-      icon={ICONS[service.icon] ?? Paintbrush}
     />
   ));
 

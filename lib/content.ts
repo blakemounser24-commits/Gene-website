@@ -13,116 +13,97 @@ export const content = {
     subhead:
       "From a single feature wall to a full commercial repaint — every surface properly prepared, coated and finished to last.",
     cta: { label: "Get A Quote", href: "#contact" },
-    // "icon" keys into the ICONS map in components/sections/services.tsx.
     // Leave "description" empty where the service name says it all.
     items: [
       {
         title: "Interior Painting",
         image: "/work/DckR8ZfE8Hd-7.jpg",
         description: "Walls, ceilings, cornices, doors, frames, skirtings and architraves.",
-        icon: "PaintRoller",
       },
       {
         title: "Exterior Painting",
         image: "/work/svc-exterior-painting.jpg",
         description: "Rendered walls, cladding, eaves, soffits, fascias, timberwork and masonry.",
-        icon: "House",
       },
       {
         title: "High-End Residential Painting",
         image: "/work/Dcsj68HlXS9-1.jpg",
         description: "New builds, renovations and premium repaints.",
-        icon: "Gem",
       },
       {
         title: "Commercial Painting",
         image: "/work/DQAeftwkxje-3.jpg",
         description: "",
-        icon: "Building2",
       },
       {
         title: "Joinery & Cabinetry Painting",
         image: "/work/svc-joinery-cabinetry.jpg",
         description: "Kitchens, wardrobes, cabinetry and polyurethane finishes.",
-        icon: "DoorOpen",
       },
       {
         title: "Spray Painting",
         image: "/work/svc-spray-painting.jpg",
         description: "Doors, joinery, ceilings, walls, cladding and detailed finishes.",
-        icon: "SprayCan",
       },
       {
         title: "Decorative Finishes",
         image: "/work/svc-decorative-finishes.jpg",
         description: "Limewash, French wash, Murowash and mineral/silicate coatings.",
-        icon: "Sparkles",
       },
       {
         title: "Wallpaper Installation & Wall Preparation",
         image: "/work/svc-wallpaper.jpg",
         description: "",
-        icon: "Wallpaper",
       },
       {
         title: "Metalwork Painting",
         image: "/work/svc-metalwork.jpg",
         description: "Balustrades, handrails, gates and structural steel using protective coating systems.",
-        icon: "Columns3",
       },
       {
         title: "Deck & Exterior Timber Coatings",
         image: "/work/svc-deck-timber.jpg",
         description: "",
-        icon: "TreePine",
       },
       {
         title: "Texture & Rendered-Surface Coatings",
         image: "/work/svc-texture-render.jpg",
         description: "Including AcraTex/elastomeric systems.",
-        icon: "Layers",
       },
       {
         title: "Roof Tile Cleaning & Painting",
         image: "/work/svc-roof.jpg",
         description: "",
-        icon: "Home",
       },
       {
         title: "Fence Painting",
         image: "/work/svc-fence-painting.jpg",
         description: "Colorbond, timber and masonry.",
-        icon: "Fence",
       },
       {
         title: "Heritage Painting & Restoration",
         image: "/work/svc-heritage-restoration.jpg",
         description: "",
-        icon: "Landmark",
       },
       {
         title: "Surface Preparation & Repairs",
         image: "/work/svc-surface-prep.jpg",
         description: "Filling, sanding, caulking, stain blocking, mould treatment and minor render repairs.",
-        icon: "Ruler",
       },
       {
         title: "Protective & Specialty Coatings",
         image: "/work/svc-protective-coatings.jpg",
         description: "Epoxy, polyurethane and high-performance coating systems.",
-        icon: "ShieldCheck",
       },
       {
         title: "Maintenance Painting & Touch-Ups",
         image: "/work/DckR8ZfE8Hd-3.jpg",
         description: "",
-        icon: "Paintbrush",
       },
       {
         title: "Water Damage Repairs",
         image: "/work/svc-water-damage.jpg",
         description: "",
-        icon: "Droplets",
       },
     ],
   },

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, type LucideIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { pickService } from "@/lib/select-service";
 import { useTilt } from "@/lib/use-tilt";
 
@@ -10,10 +10,9 @@ type Props = {
   description: string;
   image: string;
   index: number;
-  icon: LucideIcon;
 };
 
-export function ServiceCard({ title, description, image, index, icon: Icon }: Props) {
+export function ServiceCard({ title, description, image, index }: Props) {
   const tilt = useTilt();
 
   return (
@@ -45,12 +44,6 @@ export function ServiceCard({ title, description, image, index, icon: Icon }: Pr
       <div className="pointer-events-none absolute inset-0 bg-teal-900/20" aria-hidden="true" />
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[68%] bg-gradient-to-t from-teal-900 via-teal-900/85 via-35% to-transparent"
-        aria-hidden="true"
-      />
-      {/* The icon reads as a watermark over the photo rather than a solid glyph */}
-      <Icon
-        className="pointer-events-none absolute -right-7 -top-7 h-44 w-44 text-cream-50/25 mix-blend-overlay transition-transform duration-700 ease-out group-hover:-rotate-6 group-hover:scale-110 sm:h-56 sm:w-56"
-        strokeWidth={1}
         aria-hidden="true"
       />
       {tilt.enabled && <motion.div style={tilt.sheenStyle} className={tilt.sheenClassName} aria-hidden="true" />}
