@@ -53,9 +53,15 @@ export function PinnedRail({
 
   return (
     <div ref={containerRef} className={cn("relative", className)} style={{ height: `calc(100vh + ${travel * pace}px)` }}>
+      {/* The header is fixed, so centring in the full viewport tucked the top of
+          each card underneath it. Padding the frame by the header's height makes
+          the cards centre in the space that is actually visible. */}
       <div
         ref={frameRef}
-        className={cn("sticky top-0 mx-auto flex h-screen items-center justify-start", frameClassName)}
+        className={cn(
+          "sticky top-0 mx-auto flex h-screen items-center justify-start pt-20 lg:pt-[104px]",
+          frameClassName
+        )}
       >
         <motion.div ref={railRef} style={{ x }} className={cn("flex transform-gpu will-change-transform", gapClassName)}>
           {children}
