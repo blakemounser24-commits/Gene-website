@@ -94,26 +94,35 @@ for (const target of TARGETS) {
   console.log(`${target.name}.svg  ${vb[2]}×${vb[3]}  ${(svg.length / 1024).toFixed(1)}kb`);
 }
 
-/* Browser tab icon: the wordmark's "GJ" (the first two glyph paths) knocked out
-   of a navy tile — the full handshake mark loses all its line work at 16px. */
+/* Browser tab icon and Apple touch icon: the full lockup in its supplied inks,
+   centred on a cream tile so the teal reads on both light and dark browser
+   chrome. Written as SVG so it stays sharp at every size a browser asks for. */
 {
-  const glyphs = extracted.wordmark.paths.filter((p) => p.fill.toLowerCase() === INK).slice(0, 2);
-  const inner = glyphs.map((p) => `<path fill="${CREAM}" d="${p.d}"/>`).join("");
-  const box = await measure(inner, extracted.wordmark.mediaBox);
+  const inner = body(extracted.primary, INK, ACCENT);
+  const box = await measure(inner, extracted.primary.mediaBox);
 
   const size = 64;
-  const scale = (size * 0.66) / Math.max(box.width, box.height);
+  const scale = (size * 0.84) / Math.max(box.width, box.height);
   const tx = size / 2 - (box.x + box.width / 2) * scale;
   const ty = size / 2 - (box.y + box.height / 2) * scale;
 
-  const svg =
+  const icon = (tile) =>
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">` +
-    `<rect width="${size}" height="${size}" rx="12" fill="${INK}"/>` +
+    `<rect width="${size}" height="${size}" rx="${tile}" fill="${CREAM}"/>` +
     `<g transform="translate(${r(tx)} ${r(ty)}) scale(${r(scale)})">${inner}</g>` +
     `</svg>\n`;
 
-  fs.writeFileSync(path.join(ROOT, "app", "icon.svg"), svg);
+  fs.writeFileSync(path.join(ROOT, "app", "icon.svg"), icon(12));
   console.log(`app/icon.svg  ${size}×${size}`);
+
+  // Apple wants a raster at 180px and applies its own corner rounding, so this
+  // one is square-cornered.
+  await page.setViewport({ width: 180, height: 180, deviceScaleFactor: 1 });
+  await page.setContent(
+    `<body style="margin:0">${icon(0).replace("<svg ", '<svg style="width:180px;height:180px" ')}</body>`
+  );
+  await page.screenshot({ path: path.join(ROOT, "app", "apple-icon.png") });
+  console.log("app/apple-icon.png  180×180");
 }
 
 await browser.close();
