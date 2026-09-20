@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { content } from "@/lib/content";
+import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { onServicePicked } from "@/lib/select-service";
 
@@ -14,7 +15,8 @@ const inputClasses =
 const labelClasses = "mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-teal-800/70";
 
 export function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
   const [service, setService] = useState(content.services.items[0].title);
   const [justPicked, setJustPicked] = useState(false);
   const serviceRef = useRef<HTMLSelectElement>(null);
@@ -32,9 +34,56 @@ export function Contact() {
     []
   );
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  /** Photos are sent inline as base64, so they are kept small on purpose. */
+  const readAsBase64 = (file: File) =>
+    new Promise<{ filename: string; content: string }>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = String(reader.result);
+        resolve({ filename: file.name, content: result.slice(result.indexOf(",") + 1) });
+      };
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(file);
+    });
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (status === "sending") return;
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    setStatus("sending");
+    setError(null);
+
+    try {
+      const files = [...(data.getAll("attachments") as File[])].filter((f) => f.size > 0);
+      const attachments = await Promise.all(files.slice(0, 5).map(readAsBase64));
+
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          address: data.get("address"),
+          service: data.get("service"),
+          timing: data.get("timing"),
+          issue: data.get("issue"),
+          attachments,
+        }),
+      });
+
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(payload.error ?? "Something went wrong.");
+
+      setStatus("sent");
+    } catch (cause) {
+      // Keep what they typed on screen — losing a filled-in form is worse than
+      // the failure itself.
+      setStatus("error");
+      setError(cause instanceof Error ? cause.message : "Something went wrong.");
+    }
   };
 
   return (
@@ -48,7 +97,7 @@ export function Contact() {
       </div>
 
       <div className="relative z-10 mx-auto mt-14 max-w-3xl px-6">
-        {submitted ? (
+        {status === "sent" ? (
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,9 +177,25 @@ export function Contact() {
               />
             </div>
 
-            <Button as="button" type="submit" variant="primary" className="mt-8 w-full sm:w-auto">
-              {contact.submitLabel}
+            <Button
+              as="button"
+              type="submit"
+              variant="primary"
+              disabled={status === "sending"}
+              className="mt-8 w-full disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+            >
+              {status === "sending" ? "Sending…" : contact.submitLabel}
             </Button>
+
+            {status === "error" && (
+              <p role="alert" className="mt-4 text-sm text-orange-700">
+                {error} You can also call{" "}
+                <a href={siteConfig.phoneHref} className="underline underline-offset-2">
+                  {siteConfig.phone}
+                </a>
+                .
+              </p>
+            )}
           </motion.form>
         )}
       </div>
