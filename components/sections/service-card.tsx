@@ -48,7 +48,7 @@ export function ServiceCard({ title, description, image, index }: Props) {
       />
       {tilt.enabled && <motion.div style={tilt.sheenStyle} className={tilt.sheenClassName} aria-hidden="true" />}
 
-      <div className="relative">
+      <div className="service-card-copy relative">
         <span className="mb-3 block font-sans text-xs font-semibold tracking-[0.3em] text-orange-500">
           {String(index + 1).padStart(2, "0")}
         </span>

@@ -205,6 +205,37 @@ body {
   color: var(--color-stone-100);
   font-family: var(--font-sans);
   overflow-x: clip;
+  /* Read as a finished site, not an editable document: no text I-beam hovering
+     over headings and captions nobody needs to select. */
+  cursor: default;
+}
+
+/* Anything clickable still says so. */
+a,
+button,
+label,
+select,
+summary,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Fields keep their caret — people do have to type in those. */
+input,
+textarea {
+  cursor: text;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Copy layered over photography is decoration; dragging across a card should
+   not leave half a caption highlighted. Body copy and contact details stay
+   selectable so they can still be copied. */
+figcaption,
+.service-card-copy {
+  user-select: none;
 }
 
 ::selection {
