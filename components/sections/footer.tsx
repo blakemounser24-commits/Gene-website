@@ -96,7 +96,7 @@ export function Footer() {
 
           <div>
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-orange-500">Get In Touch</p>
-            <ul className="space-y-3 text-sm text-cream-50/70">
+            <ul className="selectable space-y-3 text-sm text-cream-50/70">
               <li className="flex items-start gap-2">
                 <Phone size={15} className="mt-0.5 shrink-0 text-orange-500" />
                 <a href={siteConfig.phoneHref} className="transition-colors duration-300 hover:text-cream-50">{siteConfig.phone}</a>

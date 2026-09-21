@@ -76,7 +76,7 @@ export function ServiceAreas() {
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.address)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm font-medium text-stone-50"
+              className="selectable flex items-center gap-2 text-sm font-medium text-stone-50"
             >
               <MapPin size={16} className="text-bronze-600" />
               {siteConfig.address}
