@@ -159,13 +159,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-cream-50/15 py-8 text-xs text-cream-50/55 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-cream-50/15 py-8 text-sm text-cream-50/75 sm:flex-row">
           <p>&copy; {year} &ndash; All rights reserved. &bull; {siteConfig.fullName}</p>
           <a
             href="https://www.glowingleads.com.au/"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-opacity duration-300 hover:opacity-100"
+            className="font-medium text-cream-50 transition-colors duration-300 hover:text-orange-500"
           >
             Designed By GlowingLeads
           </a>
