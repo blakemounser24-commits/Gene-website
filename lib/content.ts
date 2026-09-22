@@ -11,7 +11,7 @@ export const content = {
     eyebrow: "What We Do",
     heading: "Services We Provide",
     subhead:
-      "From a single feature wall to a full commercial repaint — every surface properly prepared, coated and finished to last.",
+      "From a single feature wall to a full commercial repaint, every surface properly prepared, coated and finished to last.",
     cta: { label: "Get A Quote", href: "#contact" },
     // Leave "description" empty where the service name says it all.
     items: [

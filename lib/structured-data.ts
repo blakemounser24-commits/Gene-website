@@ -44,7 +44,7 @@ export function buildStructuredData() {
       },
     ],
     areaServed: siteConfig.areasServed.map((name) => ({ "@type": "Place", name })),
-    sameAs: [siteConfig.social.instagram],
+    sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: siteConfig.rating.value,

@@ -1,10 +1,36 @@
 "use client";
 
+import type * as React from "react";
 import { TextEffect } from "@/components/ui/text-effect";
 import { Button } from "@/components/ui/button";
 import { Clock3, Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { content } from "@/lib/content";
+
+// Lucide doesn't ship brand marks, so Facebook and Instagram are drawn inline —
+// stroke-based to match the lucide icons (Phone, Mail, etc.) used elsewhere here.
+function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
+function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M17.5 6.5h.01" />
+    </svg>
+  );
+}
+
+const SOCIAL_LINKS = [
+  { label: "Facebook", href: siteConfig.social.facebook, icon: FacebookIcon },
+  { label: "Instagram", href: siteConfig.social.instagram, icon: InstagramIcon },
+];
 
 // Structural nav — tied to actual section ids on the page, not business content.
 const NAVIGATION_LINKS = [
@@ -66,6 +92,20 @@ export function Footer() {
               />
             </a>
             <p className="mt-5 text-sm leading-relaxed text-cream-50/65">{footer.blurb}</p>
+            <div className="mt-5 flex gap-3">
+              {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex size-9 items-center justify-center rounded-full border border-cream-50/20 text-cream-50/70 transition-colors duration-300 hover:border-orange-500 hover:text-orange-500"
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>

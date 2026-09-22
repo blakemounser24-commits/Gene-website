@@ -45,6 +45,7 @@ export const siteConfig = {
   ],
   social: {
     instagram: "https://www.instagram.com/gjpaintpartners/",
+    facebook: "https://www.facebook.com/people/GJ-Paint-Partners/100095083085322/",
   },
   /**
    * Brand artwork, generated from /logo by `node scripts/build-logos.mjs`.
