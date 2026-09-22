@@ -32,6 +32,18 @@ export function SmoothScroll() {
     gsap.ticker.lagSmoothing(0);
 
     /**
+     * Lenis measures the page's scrollable height once on init. Everything on
+     * this page that changes layout after that — images finishing loading,
+     * scroll-triggered reveals, fonts swapping in — leaves that measurement
+     * stale and short, so the wheel stops a little before the real bottom
+     * even though the native scrollbar can still reach it. Watching body size
+     * keeps Lenis's limit in sync with the actual document.
+     */
+    const resizeObserver = new ResizeObserver(() => lenis.resize());
+    resizeObserver.observe(document.body);
+    window.addEventListener("load", () => lenis.resize());
+
+    /**
      * In-page links are handled here rather than through Lenis's own `anchors`
      * option. That option lets the browser perform its native jump first and
      * then animates from Lenis's own position, so a nav click visibly snapped
@@ -57,6 +69,7 @@ export function SmoothScroll() {
 
     return () => {
       document.removeEventListener("click", onClick);
+      resizeObserver.disconnect();
       gsap.ticker.remove(tick);
       lenis.destroy();
     };
