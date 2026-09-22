@@ -474,9 +474,5 @@ export const content = {
     ctaLabel: "Get A Quote",
     blurb: "Family-run painters based in Kirrawee, working across the Sutherland Shire and greater Sydney.",
     serviceLinks: ["Interior Painting", "Exterior Painting", "Spray Painting", "Decorative Finishes", "Joinery & Cabinetry", "Surface Prep & Repairs"],
-    legalLinks: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms & Conditions", href: "#" },
-    ],
   },
 };

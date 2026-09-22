@@ -161,14 +161,17 @@ export function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-cream-50/15 py-8 text-xs text-cream-50/55 sm:flex-row">
           <p>&copy; {year} &ndash; All rights reserved. &bull; {siteConfig.fullName}</p>
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            {footer.legalLinks.map((link) => (
-              <a key={link.label} href={link.href} className="transition-opacity duration-300 hover:opacity-100">
-                {link.label}
-              </a>
-            ))}
-            <span>Designed By GlowingLeads</span>
-          </div>
+          <p>
+            Designed By{" "}
+            <a
+              href="https://www.glowingleads.com.au/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity duration-300 hover:opacity-100"
+            >
+              GlowingLeads
+            </a>
+          </p>
         </div>
       </div>
     </footer>
